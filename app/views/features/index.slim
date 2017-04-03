@@ -1,0 +1,63 @@
+.container
+  .row
+    - @features.each do |feature|
+      .col-md-3
+        .feature-box data-type="#{feature.type}" data-name="#{feature.name}"
+          h3 = feature.name.humanize
+          - if feature.boolean?
+            = check_box_tag "active", true  , feature.active?, class: 'active-switch'
+          - else
+            - feature.data.each do |k, v|
+              p = k
+              input name="#{k}" value="#{v}"
+
+
+javascript:
+
+  var updateFeature = function (box, feature) {
+    if (feature.type == 'boolean') {
+
+    } else {
+      for(var input of box.find('input')) {
+        var value = feature.data[input.name]
+        input.value = value;
+      }
+    }
+  };
+
+  var bindFeatureBox = function(box) {
+    var featureName = box.data('name')
+    var featureType = box.data('type')
+
+    box.find('input').on('change', (e) => {
+      var key = e.currentTarget.name
+
+      if (featureType == 'boolean') {
+        var value = e.currentTarget.checked
+      } else {
+        var value = e.currentTarget.value
+      }
+
+      var data = {}
+
+      data[key] = value
+      $.ajax({
+        method: 'PATCH',
+        url: `features/${featureName}`,
+        data: { feature: data },
+        success: (response) => {
+          updateFeature(box, response.feature)
+        },
+        failure: (response) => {
+          updateFeature(box, response.feature);
+        }
+      })
+    })
+  };
+
+  $(document).ready(function() {
+    var featureBoxes = $('.feature-box');
+    for(var box of featureBoxes) {
+      bindFeatureBox.call(this, $(box));
+    };
+  });
