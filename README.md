@@ -26,6 +26,11 @@ Or install it yourself as:
 $ gem install feature
 ```
 
+
+```bash
+$ rails g feature:install
+```
+
 ## Contributing
 Contribution directions go here.
 

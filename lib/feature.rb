@@ -104,7 +104,7 @@ module Feature
     end
 
     def yml
-      @yml ||= YAML.load_file("#{Rails.root.to_s}/config/features.yml")
+      @yml ||= YAML.load_file("#{Rails.root.to_s}/config/feature.yml")
     end
   end
 
