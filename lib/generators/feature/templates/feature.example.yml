@@ -1,0 +1,10 @@
+# # Examples:
+# # Features can either define variable data attributes
+# # or can have a boolean attribute for activation
+# feature_1:
+#   data:
+#     first: 1440
+#     second: 2880
+# feature_2:
+#   boolean: "false"
+
