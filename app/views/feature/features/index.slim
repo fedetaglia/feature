@@ -28,10 +28,10 @@ javascript:
   var bindFeatureBox = function(box) {
     var featureName = box.data('name')
     var featureType = box.data('type')
+    var updatePath = `${window.location.pathname}/features/${featureName}`
 
     box.find('input').on('change', (e) => {
       var key = e.currentTarget.name
-
       if (featureType == 'boolean') {
         var value = e.currentTarget.checked
       } else {
@@ -41,9 +41,10 @@ javascript:
       var data = {}
 
       data[key] = value
+
       $.ajax({
         method: 'PATCH',
-        url: `feature/features/${featureName}`,
+        url: updatePath,
         data: { feature: data },
         success: (response) => {
           updateFeature(box, response.feature)
