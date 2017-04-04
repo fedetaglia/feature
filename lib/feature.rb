@@ -8,7 +8,7 @@ module Feature
     # CLASS METHODS #
     class << self
       def all
-        yml.keys.map{|key| ::Feature.new key }
+        yml.keys.map{|key| Manager.new key }
       end
 
       def find feature
@@ -118,40 +118,40 @@ module Feature
     end
 
     def type
-      Feature.send(:boolean?, name) ? "boolean" : "data"
+      Manager.send(:boolean?, name) ? "boolean" : "data"
     end
 
     def boolean?
-      Feature.send(:boolean?, name)
+      Manager.send(:boolean?, name)
     end
 
     def data?
-      Feature.send(:data?, name)
+      Manager.send(:data?, name)
     end
 
     def active?
       raise TypeError.new("#{name} does not responds to active?") unless boolean?
-      Feature.active?(name)
+      Manager.active?(name)
     end
 
     def data
       raise TypeError.new("#{name} does not responds to data") unless data?
-      Feature.get_full_data(name)
+      Manager.get_full_data(name)
     end
 
     def get data_key
-      raise TypeError.new("#{name} does not responds to get_data with #{data_key}") unless Feature.key?(name, data_key)
+      raise TypeError.new("#{name} does not responds to get_data with #{data_key}") unless Manager.key?(name, data_key)
       data[data_key.to_s]
     end
 
     def activate
       raise TypeError.new("#{name} does not responds to activate") unless boolean?
-      Feature.activate name
+      Manager.activate name
     end
 
     def deactivate
       raise TypeError.new("#{name} does not responds to deactivate") unless boolean?
-      Feature.deactivate name
+      Manager.deactivate name
     end
 
     def update args={}
@@ -161,7 +161,7 @@ module Feature
         return false
       else
         args.map do |key, value|
-          Feature.set_key name, key, value
+          Manager.set_key name, key, value
         end
       end
     end
