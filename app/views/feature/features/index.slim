@@ -43,7 +43,7 @@ javascript:
       data[key] = value
       $.ajax({
         method: 'PATCH',
-        url: `features/${featureName}`,
+        url: `feature/features/${featureName}`,
         data: { feature: data },
         success: (response) => {
           updateFeature(box, response.feature)

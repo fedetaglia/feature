@@ -6,6 +6,7 @@ module Feature
 
      def install
         copy_file "feature.example.yml", "./config/feature.yml"
+        copy_file "feature.initializer.rb", "./config/initializers/feature.rb"
      end
    end
 end

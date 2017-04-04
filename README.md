@@ -26,6 +26,7 @@ Or install it yourself as:
 $ gem install feature
 ```
 
+Then Run installer to create feature initializer and yml
 
 ```bash
 $ rails g feature:install

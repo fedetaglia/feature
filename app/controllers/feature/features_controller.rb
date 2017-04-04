@@ -1,12 +1,13 @@
 module Feature
   class FeaturesController < ApplicationController
+    skip_before_action :verify_authenticity_token, only: [:update]
 
     def index
-      @features = Feature.all
+      @features = ::Feature.all
     end
 
     def update
-      feature = Feature.find params[:id]
+      feature = ::Feature.find params[:id]
       respond_to do |format|
 
         if feature.update feature_permitted_params(feature)
