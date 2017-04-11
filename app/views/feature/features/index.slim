@@ -1,6 +1,6 @@
 .container
 
-  - if ::Feature.can_update?
+  - if Feature.can_update?
     .alert.alert-success
       | Live
   - else
@@ -18,14 +18,14 @@
             - if feature.boolean?
               .form-group.boolean-field.text-center
                 h4 Activate
-                = check_box_tag "active", true, feature.active?, class: 'tgl tgl-light', disabled: !::Feature.can_update?
-                label.tgl-btn for='active' class="#{::Feature.can_update? ? '' : 'disabled'}"
+                = check_box_tag "active", true, feature.active?, class: 'tgl tgl-light', disabled: !Feature.can_update?
+                label.tgl-btn for='active' class="#{Feature.can_update? ? '' : 'disabled'}"
             - else
               - feature.data.each do |k, v|
                 .form-group
                   label for=k
                     = k
-                  input.form-control name="#{k}" value="#{v}" disabled="#{!::Feature.can_update?}"
+                  input.form-control name="#{k}" value="#{v}" disabled=!Feature.can_update?
 
 
 javascript:
