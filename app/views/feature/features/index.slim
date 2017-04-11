@@ -1,15 +1,31 @@
 .container
+
+  - if ::Feature.can_update?
+    .alert.alert-success
+      | Live
+  - else
+    .alert.alert-danger
+      | Feature is running with default only. Initialize a Redis server to be able to get full control.
+
+
   .row
     - @features.each do |feature|
-      .col-md-3
+      .col-md-4
         .feature-box data-type="#{feature.type}" data-name="#{feature.name}"
-          h3 = feature.name.humanize
-          - if feature.boolean?
-            = check_box_tag "active", true  , feature.active?, class: 'active-switch'
-          - else
-            - feature.data.each do |k, v|
-              p = k
-              input name="#{k}" value="#{v}"
+          .title = feature.name.humanize
+
+          .content
+            - if feature.boolean?
+              .form-group.boolean-field.text-center
+                h4 Activate
+                = check_box_tag "active", true, feature.active?, class: 'tgl tgl-light', disabled: !::Feature.can_update?
+                label.tgl-btn for='active' class="#{::Feature.can_update? ? '' : 'disabled'}"
+            - else
+              - feature.data.each do |k, v|
+                .form-group
+                  label for=k
+                    = k
+                  input.form-control name="#{k}" value="#{v}" disabled="#{!::Feature.can_update?}"
 
 
 javascript:

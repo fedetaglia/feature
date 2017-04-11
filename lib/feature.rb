@@ -6,6 +6,16 @@ module Feature
 
   # CLASS METHODS #
   class << self
+
+    def can_update?
+      begin
+        $redis.ping
+        return true
+      rescue Redis::CannotConnectError => e
+        return false
+      end
+    end
+
     def all
       yml.keys.map{|key| Feature.new key }
     end

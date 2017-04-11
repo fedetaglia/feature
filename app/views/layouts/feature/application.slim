@@ -1,0 +1,11 @@
+doctype html
+html
+  head
+    title Feature
+
+    = stylesheet_link_tag    "feature/application", media: "all"
+    = javascript_include_tag "feature/application"
+    = csrf_meta_tags
+  body
+    = render "header"
+    = yield

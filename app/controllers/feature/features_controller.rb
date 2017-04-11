@@ -1,9 +1,11 @@
 module Feature
   class FeaturesController < ApplicationController
+
     skip_before_action :verify_authenticity_token, only: [:update]
 
     def index
       @features = ::Feature.all
+
     end
 
     def update

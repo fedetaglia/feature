@@ -19,6 +19,22 @@ var updateFeature = function (box, feature) {
   }
 };
 
+var toggleError = function(toggle) {
+  if (toggle) {
+    $('body .container').append("<div class='loading error'>Error</div>")
+  } else {
+    $('.loading').remove()
+  }
+}
+
+var toggleSaving = function(toggle) {
+  if (toggle) {
+    $('body .container').append("<div class='loading'>Saving...</div>")
+  } else {
+    $('.loading').remove()
+  }
+}
+
 var bindFeatureBox = function(box) {
   var featureName = box.data('name')
   var featureType = box.data('type')
@@ -36,15 +52,20 @@ var bindFeatureBox = function(box) {
 
     data[key] = value
 
+    toggleSaving(true)
+
     $.ajax({
       method: 'PATCH',
       url: updatePath,
       data: { feature: data },
       success: (response) => {
         updateFeature(box, response.feature)
+        toggleError(false)
+        toggleSaving(false)
       },
-      failure: (response) => {
-        updateFeature(box, response.feature);
+      error: (response) => {
+        toggleSaving(false)
+        toggleError(true)
       }
     })
   })
