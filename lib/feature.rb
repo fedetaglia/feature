@@ -17,7 +17,7 @@ module Feature
     end
 
     def all
-      yml.keys.map{|key| Feature.new key }
+      yml.keys.map{|key| Feature.new key, yml[key]['description'] }
     end
 
     def find feature
@@ -120,10 +120,11 @@ module Feature
 
   class Feature
     # INSTANCE METHODS #
-    attr_accessor :name
+    attr_accessor :name, :description
 
-    def initialize name
+    def initialize name, description
       @name = name
+      @description = description
     end
 
     def type

@@ -2,10 +2,12 @@
 # # Features can either define variable data attributes
 # # or can have a boolean attribute for activation
 # feature_1:
+#   description: "Description"
 #   data:
 #     first: 1440
 #     second: 2880
 # feature_2:
 #   boolean: "false"
 signup:
+  description: "Enable signup"
   boolean: "false"

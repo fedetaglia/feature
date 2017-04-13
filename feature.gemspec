@@ -10,8 +10,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Federico Tagliabue"]
   s.email       = ["fede.tagliabue@gmail.com"]
   s.homepage    = "https://github.com/fedetaglia/i-will-do-this/"
-  s.summary     = "Wrapper with default fallout and web dashboard for rollout gem."
-  s.description = "Wrapper with default fallout and web dashboard for rollout gem."
+  s.summary     = "Wrapper with default fallback and web dashboard for rollout gem."
+  s.description = "Wrapper with default fallback and web dashboard for rollout gem."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
@@ -21,6 +21,4 @@ Gem::Specification.new do |s|
   s.add_dependency "slim"
   s.add_dependency "jquery-rails"
   s.add_dependency "bootstrap-sass"
-
-  s.add_development_dependency "sqlite3"
 end

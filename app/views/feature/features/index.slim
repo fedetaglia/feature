@@ -13,6 +13,8 @@
       .col-md-4
         .feature-box data-type="#{feature.type}" data-name="#{feature.name}"
           .title = feature.name.humanize
+          br
+          small = feature.description
 
           .content
             - if feature.boolean?

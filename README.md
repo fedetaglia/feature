@@ -32,8 +32,10 @@ Then Run installer to create feature initializer and yml
 $ rails g feature:install
 ```
 
-## Contributing
-Contribution directions go here.
+Mount the web views on your application adding to routes
+```
+mount Feature::Engine => "services/feature"
+```
 
 ## License
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
