@@ -8,6 +8,18 @@ Give a webview to enable/disable features.
 
 ## Usage
 How to use my plugin.
+<!-- TODO -->
+
+### Feature definition and default
+Define feature and default on feature.yml file.
+You can define different default value per environment.
+
+### Boolean Feature
+<!-- TODO -->
+
+### Data Feature
+<!-- TODO -->
+
 
 ## Installation
 Add this line to your application's Gemfile:
