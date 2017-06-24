@@ -19,8 +19,7 @@ module Feature
 
     def all
       yml.keys.map do |key|
-        return ActiveFeature.new key, yml[key]['description'] if boolean? key
-        return DataFeature.new key, yml[key]['description']
+        feature_class(key).new key, yml[key]['description']
       end
     end
 
@@ -51,6 +50,10 @@ module Feature
       yml[feature.to_s].keys.include? 'boolean'
     end
 
+    def feature_class feature
+      boolean?(feature) ? ActiveFeature : DataFeature
+    end
+
     def data? feature
       yml[feature.to_s].keys.include? 'data'
     end
@@ -71,7 +74,11 @@ module Feature
   private
 
     def yml
-      @yml ||= YAML.load_file("#{Rails.root.to_s}/config/feature.yml")
+      file.send(:[], Rails.env)
+    end
+
+    def file
+      @file ||= YAML.load_file("#{Rails.root.to_s}/config/feature.yml")
     end
 
   end
