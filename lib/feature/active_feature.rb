@@ -11,11 +11,11 @@ module Feature
     end
 
     def activate
-      $rollout.activate feature
+      $rollout.activate name
     end
 
     def deactivate
-      $rollout.deactivate feature
+      $rollout.deactivate name
     end
 
     def permitted_attributes

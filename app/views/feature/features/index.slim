@@ -20,8 +20,8 @@
             - if feature.boolean?
               .form-group.boolean-field.text-center
                 h4 Activate
-                = check_box_tag "active", true, feature.active?, class: 'tgl tgl-light', disabled: !Feature.can_update?
-                label.tgl-btn for='active' class="#{Feature.can_update? ? '' : 'disabled'}"
+                = check_box_tag "#{feature.name}", true, feature.active?, class: 'tgl tgl-light', disabled: !Feature.can_update?, data: {key: 'active'}
+                label.tgl-btn for="#{feature.name}" class="#{Feature.can_update? ? '' : 'disabled'}"
             - else
               - feature.data.each do |k, v|
                 .form-group

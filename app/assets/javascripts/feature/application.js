@@ -36,12 +36,13 @@ var toggleSaving = function(toggle) {
 }
 
 var bindFeatureBox = function(box) {
-  var featureName = box.data('name')
-  var featureType = box.data('type')
-  var updatePath = `${window.location.pathname}/features/${featureName}`
+  let featureName = box.data('name')
+  let featureType = box.data('type')
+  let updatePath = `${window.location.pathname}/features/${featureName}`
 
   box.find('input').on('change', (e) => {
-    var key = e.currentTarget.name
+    var key = e.currentTarget.dataset.key
+
     if (featureType == 'boolean') {
       var value = e.currentTarget.checked
     } else {

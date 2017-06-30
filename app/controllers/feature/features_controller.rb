@@ -5,11 +5,11 @@ module Feature
 
     def index
       @features = ::Feature.all
-
     end
 
     def update
       feature = ::Feature.find params[:id]
+
       respond_to do |format|
 
         if feature.update feature_permitted_params(feature)
