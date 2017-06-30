@@ -40,7 +40,7 @@ var toggleSaving = function(toggle) {
 var bindFeatureBox = function(box) {
   var featureName = box.data('name')
   var featureType = box.data('type')
-  var updatePath = window.location.pathname "/features/" + featureName
+  var updatePath = window.location.pathname + "/features/" + featureName
 
   box.find('input').on('change', function(e) {
     var key = e.currentTarget.dataset.key
