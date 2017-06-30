@@ -61,12 +61,12 @@ var bindFeatureBox = function(box) {
       method: 'PATCH',
       url: updatePath,
       data: { feature: data },
-      success: (response) => {
+      success: function(response) {
         updateFeature(box, response.feature)
         toggleError(false)
         toggleSaving(false)
       },
-      error: (response) => {
+      error: function(response) {
         toggleSaving(false)
         toggleError(true)
       }
