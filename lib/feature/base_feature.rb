@@ -9,11 +9,11 @@ module Feature
     end
 
     def boolean?
-      type == 'boolean'
+      type == :boolean
     end
 
     def data?
-      type == 'data'
+      type == :data
     end
 
     def to_h
