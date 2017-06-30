@@ -3,8 +3,8 @@
 
 var bindFeatureBoxes = function() {
   var featureBoxes = $('.feature-box');
-  for(var box of featureBoxes) {
-    bindFeatureBox.call(this, $(box));
+  for(i = 0, i < featureBoxes; i++) {
+    bindFeatureBox.call(this, $(featureBoxes[i]));
   };
 }
 
