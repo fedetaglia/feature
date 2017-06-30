@@ -4,7 +4,7 @@
 var bindFeatureBoxes = function() {
   var featureBoxes = $('.feature-box');
   for(i = 0, i < featureBoxes; i++) {
-    bindFeatureBox.call(this, $(featureBoxes[i]));
+    bindFeatureBox($(featureBoxes[i]));
   };
 }
 
@@ -36,11 +36,11 @@ var toggleSaving = function(toggle) {
 }
 
 var bindFeatureBox = function(box) {
-  let featureName = box.data('name')
-  let featureType = box.data('type')
-  let updatePath = `${window.location.pathname}/features/${featureName}`
+  var featureName = box.data('name')
+  var featureType = box.data('type')
+  var updatePath = window.location.pathname "/features/" + featureName
 
-  box.find('input').on('change', (e) => {
+  box.find('input').on('change', function(e) {
     var key = e.currentTarget.dataset.key
 
     if (featureType == 'boolean') {
