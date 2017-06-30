@@ -12,7 +12,7 @@ var updateFeature = function (box, feature) {
   if (feature.type == 'boolean') {
 
   } else {
-    for(var input of box.find('input')) {
+    for(var input in box.find('input')) {
       var value = feature.data[input.name]
       input.value = value;
     }
