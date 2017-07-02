@@ -57,9 +57,8 @@ module Feature
 
     def get_full_data
       data_hash = {}
-
       data_keys.map do |k|
-        data_hash[k] = data(name, k)
+        data_hash[k] = data(k)
       end
 
       return data_hash

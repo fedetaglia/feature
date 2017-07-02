@@ -3,7 +3,8 @@
 
 var bindFeatureBoxes = function() {
   var featureBoxes = $('.feature-box');
-  for(i = 0; i < featureBoxes.lenght; i++) {
+
+  for(i = 0; i < featureBoxes.length; i++) {
     bindFeatureBox($(featureBoxes[i]));
   };
 }
@@ -14,7 +15,7 @@ var updateFeature = function(box, feature) {
   } else {
     var inputs = box.find('input')
 
-    for(i = 0; i < inputs.lenght; i++) {
+    for(i = 0; i < inputs.length; i++) {
       var value = feature.data[inputs[i].name]
       inputs[i].value = value;
     }
