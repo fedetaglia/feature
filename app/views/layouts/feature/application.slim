@@ -7,5 +7,12 @@ html
     = javascript_include_tag "feature/application"
     = csrf_meta_tags
   body
-    = render "feature/features/header"
+    nav.navbar.navbar-inverse
+      .container-fluid
+        .navbar-header
+          .navbar-brand
+            = link_to main_app.root_path do 
+              ' Feature
+              | | #{Rails.env.titleize} Environment
+
     = yield

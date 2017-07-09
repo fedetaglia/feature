@@ -49,7 +49,7 @@ Mount the web views on your application adding to routes
 mount Feature::Engine => "services/feature"
 ```
 ## Todo
-Add rails environment on page header
+
 
 ## License
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
