@@ -19,14 +19,18 @@ module Feature
 
     def all
       yml.keys.map do |key|
-        feature_class(key).new key, yml[key]['description']
+        feature_class(key).new key, get_description(key)
       end
     end
 
     def find key
       raise NotFeatureError unless is_feature?(key)
-      return ActiveFeature.new key, yml[key.to_s]['description'] if boolean? key
-      return DataFeature.new key, yml[key.to_s]['description']
+      return ActiveFeature.new key, get_description(key) if boolean? key
+      return DataFeature.new key, get_description(key)
+    end
+
+    def get_description key
+      file['default'][key.to_s]['description']
     end
 
     def is_feature? feature

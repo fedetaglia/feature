@@ -1,6 +1,8 @@
 module Feature
   class FeaturesController < ApplicationController
 
+    layout 'feature/application'
+
     skip_before_action :verify_authenticity_token, only: [:update]
 
     def index
