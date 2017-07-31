@@ -55,7 +55,7 @@ module Feature
       object.active?
     end
 
-    def data key, data
+    def data key, data = nil
       object = find(key)
       raise TypeError.new("#{name} does not responds to data") if object.is_a? ActiveFeature
       object.data(data)
